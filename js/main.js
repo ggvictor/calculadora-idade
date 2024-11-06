@@ -58,6 +58,8 @@ button.addEventListener('click',()=>{
 
     let diasCompletos = diaAtual - diaNascimento
 
+   
+
     if(mesesCompletos < 0){
         idade --;
         mesesCompletos = mesesCompletos + 12;
@@ -75,10 +77,27 @@ button.addEventListener('click',()=>{
         }
     }
 
-    console.log(idade, mesesCompletos)
-    anos.innerHTML = idade;
-    meses.innerHTML = mesesCompletos;
-    dias.innerHTML = diasCompletos;
+        console.log(idade, mesesCompletos)
+        anos.innerHTML = idade;
+        meses.innerHTML = mesesCompletos;
+        dias.innerHTML = diasCompletos;
+
+    if(diaNascimento > 31 || diaNascimento < 1|| mesNascimento > 12 || mesNascimento < 1 || anoNascimento > anoAtual){
+        alert("Data incorreta");
+        anos.innerHTML = "";
+        meses.innerHTML = "";
+        dias.innerHTML = "";
+        return;
+    }
+
+    if(mesNascimento === 2 && diaNascimento >= 30 || mesNascimento === 4 && diaNascimento > 30 || mesNascimento === 6 && diaNascimento > 30 || mesNascimento === 8 && diaNascimento > 30 || mesNascimento === 10 && diaNascimento > 30){
+        
+        alert("Data incorreta");
+        anos.innerHTML = "";
+        meses.innerHTML = "";
+        dias.innerHTML = "";
+        return;
+    }
 })
 dia.addEventListener('input', diaChange);
 mes.addEventListener('input', mesChange);
